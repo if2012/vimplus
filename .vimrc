@@ -109,6 +109,13 @@ set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件列表
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" inspired by spf13, 自定义需要的插件集合
+if !exists('g:plug_groups')
+    " let g:plug_groups=['python', 'javascript', 'golang', 'php', 'ruby', 'shell', 
+    "             \    'markdown', 'html', 'css', 'less', 'coffeescript', 'tmux', 'json', 'beta']
+    let g:plug_groups=['python', 'javascript', 'markdown', 'html', 'css', 'beta']
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'chxuan/cpp-mode'
@@ -155,6 +162,12 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/github-complete.vim'
 Plug 'yianwillis/vimcdoc'
 Plug 'wsdjeg/FlyGrep.vim'
+if count(g:plug_groups, 'tmux')
+    " tmux
+    " For tmux navigator Ctrl-hjkl
+    Plug 'christoomey/vim-tmux-navigator'
+    " Plug 'benmills/vimux'
+endif
 
 call plug#end()            
 
