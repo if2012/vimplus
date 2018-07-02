@@ -120,11 +120,11 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chxuan/cpp-mode'
 Plug 'chxuan/change-colorscheme'
-Plug 'chxuan/prepare-code'
+" Plug 'chxuan/prepare-code'
 Plug 'chxuan/vim-buffer'
 Plug 'chxuan/vim-replace'
 Plug 'chxuan/vimplus-startify'
-Plug 'chxuan/tagbar'
+Plug 'majutsushi/tagbar'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Yggdroot/LeaderF'
 Plug 'mileszs/ack.vim'
@@ -335,6 +335,8 @@ nnoremap <silent> <leader>t :TagbarToggle<cr>
 inoremap <silent> <leader>t <esc> :TagbarToggle<cr>
 " 在某些情况下自动打开tagbar
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+" 解决tagbar和airline打开大文件性能冲突
+let g:airline#extensions#tagbar#enabled = 0
 
 ""默认打开Taglist 
 "let Tlist_Auto_Open=0 
