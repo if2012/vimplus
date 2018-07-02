@@ -44,10 +44,19 @@ set showcmd              " select模式下显示选中的行数
 set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
 set number               " 开启行号显示
-set cursorline           " 高亮显示当前行
+" set cursorline           " 高亮显示当前行
 set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
 set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
+autocmd InsertEnter * set nocul
+autocmd InsertLeave * set cul
+" Broken down into easily includeable segments
+set statusline=%<%f\                     " Filename
+set statusline+=%w%h%m%r                 " Options
+set statusline+=%{fugitive#statusline()} " Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " Filetype
+set statusline+=\ [%{getcwd()}]          " Current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
