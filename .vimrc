@@ -451,6 +451,8 @@ let g:ycm_semantic_triggers.c = ['->', '.', ' ', '(', '[', '&',']']
 let g:tagbar_width = 30
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 inoremap <silent> <leader>t <esc> :TagbarToggle<cr>
+" 关闭排序     [也就是按标签本身在文件中的位置排序]
+let g:tagbar_sort = 0                          
 " 在某些情况下自动打开tagbar
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 " 解决tagbar和airline打开大文件性能冲突
