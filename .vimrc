@@ -176,6 +176,12 @@ if count(g:plug_groups, 'tmux')
     " Plug 'benmills/vimux'
 endif
 
+" " wintabs must load after other plugins {{{
+" Plug 'zefei/vim-wintabs'
+" Plug 'zefei/vim-wintabs-powerline'
+
+" }}}
+
 call plug#end()            
 
 " load vim default plugin
@@ -290,6 +296,12 @@ nnoremap <silent> <c-p> :PreviousBuffer<cr>
 nnoremap <silent> <c-n> :NextBuffer<cr>
 nnoremap <silent> <leader>d :CloseBuffer<cr>
 nnoremap <silent> <leader>D :BufOnly<cr>
+
+" " vim-wintabs
+" nnoremap <silent> <c-p> :WintabsPrevious<cr>
+" nnoremap <silent> <c-n> :WintabsNext<cr>
+" nnoremap <silent> <leader>d :WintabsClose<cr>
+" nnoremap <silent> <leader>D :WintabsOnly<cr>
 
 " nerdtree
 nnoremap <silent> <leader>n :NERDTreeToggle<cr>
