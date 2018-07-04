@@ -162,6 +162,11 @@ Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/github-complete.vim'
 Plug 'yianwillis/vimcdoc'
 Plug 'wsdjeg/FlyGrep.vim'
+Plug 'NLKNguyen/c-syntax.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 if count(g:plug_groups, 'tmux')
     " tmux
     " For tmux navigator Ctrl-hjkl
@@ -421,6 +426,12 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " Fly Grep
 nnoremap <Space>s/ :FlyGrep<cr>
+
+" indentLine          显示对齐线
+let g:indentLine_enabled    = 1                " 默认关闭
+let g:indentLine_char       = '┆'              " 设置对齐线字符
+let g:indentLine_color_term = 239              " 设置非 GUI 线条颜色
+let g:indentLine_color_gui  = '#A4E57E'        " 设置 GUI 线条颜色
 
 " gv
 nnoremap <leader>g :GV<cr>
