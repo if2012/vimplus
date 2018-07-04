@@ -108,6 +108,8 @@ function copy_files()
     mkdir ~/.vim
     rm -rf ~/.vim/colors
     ln -s ${PWD}/colors ~/.vim
+	ln -s ${PWD}/dict ~/.vim
+	ln -s ${PWD}/UltiSnips ~/.vim
 }
 
 # 安装mac平台字体
