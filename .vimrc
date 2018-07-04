@@ -219,6 +219,20 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 " vim关闭最后一个文件编辑buffer窗口时自动退出其余所有NERDTree、tagbar、Quickfix窗口
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=1
+
+" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+
+" 跳转高亮一下匹配的括号
+set showmatch
+" 匹配括号高亮的时间（单位是十分之一秒）
+set matchtime=1
+
+" number {{{
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
 set relativenumber number
 au FocusLost * :set norelativenumber number
@@ -248,6 +262,59 @@ function! HideNumber()
   set number?
 endfunc
 nnoremap <leader>cn :call HideNumber()<CR>
+
+" }}}
+
+" filetype settings {{{
+autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
+autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufRead,BufNewFile *.part set filetype=html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+
+" disable showmatch when use > in php
+au BufWinEnter *.php set mps-=<:>
+
+" 保存python文件时删除多余空格
+fun! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " do the business:
+    %s/\s\+$//e
+    " clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl 
+            \    autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+" }}}
+
+" 针对部分语言添加字典补全
+au FileType c setlocal dict+=~/.vim/dict/c.dict
+au FileType cpp setlocal dict+=~/.vim/dict/c.dict
+au FileType cpp setlocal dict+=~/.vim/dict/cpp.dict
+au FileType rust setlocal dict+=~/.vim/dict/rust.dict
+au FileType go setlocal dict+=~/.vim/dict/go.dict
+au FileType java setlocal dict+=~/.vim/dict/java.dict
+au FileType lua setlocal dict+=~/.vim/dict/lua.dict
+au FileType perl setlocal dict+=~/.vim/dict/perl.dict
+au FileType php setlocal dict+=~/.vim/dict/php.dict
+au FileType python setlocal dict+=~/.vim/dict/python.dict
+au FileType mysql setlocal dict+=~/.vim/dict/mysql.dict
+au FileType elixir,eelixir dict+=~/.vim/dict/elixir.dict
+au FileType ruby,eruby dict+=~/.vim/dict/ruby.dict
+au FileType html,gohtmltmpl,eelixir,blade,volt,*.twig,htmldjango,jinja,eruby,jst setlocal dict+=~/.vim/dict/html.dict
+au FileType smarty,mustache,handlebars,vue,jsx setlocal dict+=~/.vim/dict/html.dict
+au FileType FileType css,scss,less setlocal dict+=~/.vim/dict/css.dict
+au FileType javascript,coffee,typescript,ls setlocal dict+=~/.vim/dict/javascript.dict
+au FileType slim,pug setlocal dict+=~/.vim/dict/html.dict
+au FileType slim,pug setlocal dict+=~/.vim/dict/css.dict
+au FileType slim,pug dict+=~/.vim/dict/javascript.dict
+au FileType Dockerfile setlocal dict+=~/.vim/dict/Dockerfile.dict
+au FileType docker-compose setlocal dict+=~/.vim/dict/docker-compose.dict
 
 " 主题
 set background=dark
