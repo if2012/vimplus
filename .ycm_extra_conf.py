@@ -37,7 +37,7 @@ import ycm_core
 flags = [
 '-Wall',
 '-Wextra',
-'-Werror',
+# '-Werror',        # Fucking unused parameter argc!!!
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-fexceptions',
@@ -61,23 +61,17 @@ flags = [
 
 # c/c++ include path
 '-isystem',
-'/usr/include/c++/4.8',
+'/usr/include/c++/4.6',
 '-isystem',
-'/usr/include/c++/4.8.5',
-'-isystem',
-'/usr/include/c++/4.9.3',
-'-isystem',
-'/usr/include/c++/5',
+'/usr/include/c++/4.6.3',
 '-isystem',
 '/usr/include/c++/6',
 '-isystem',
-'/usr/include/c++/7',
-'-isystem',
-'/usr/include/c++/8',
+'/usr/include/c++/6.2.0',
 '-isystem',
 '/usr/include',
 '-isystem',
-'/usr/include/x86_64-linux-gnu',
+'/usr/include/i386-linux-gnu',
 '-isystem',
 '/usr/local/include',
 
