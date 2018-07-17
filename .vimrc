@@ -74,6 +74,7 @@ set smarttab             " 在行和段开始处使用制表符
 set nowrap               " 禁止折行
 set backspace=2          " 使用回车键正常处理indent,eol,start等
 set sidescroll=10        " 设置向右滚动字符数
+set nofoldenable         " 禁用折叠代码
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码补全
@@ -126,6 +127,9 @@ Plug 'chxuan/vim-replace'
 Plug 'chxuan/vimplus-startify'
 Plug 'majutsushi/tagbar'
 Plug 'ervandew/supertab'
+Plug 'chxuan/vim-edit'
+Plug 'chxuan/vimplus-startify'
+Plug 'chxuan/tagbar'
 Plug 'Valloric/YouCompleteMe'
 Plug 'Yggdroot/LeaderF'
 Plug 'mileszs/ack.vim'
@@ -198,9 +202,6 @@ nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 
 " 重新加载vimrc文件
 nnoremap <leader>s :source $MYVIMRC<cr>
-
-" 复制当前到行末
-nnoremap Y y$
 
 " 安装、更新、删除插件
 nnoremap <leader><leader>i :PlugInstall<cr>
@@ -363,6 +364,10 @@ nnoremap <silent> <c-p> :PreviousBuffer<cr>
 nnoremap <silent> <c-n> :NextBuffer<cr>
 nnoremap <silent> <leader>d :CloseBuffer<cr>
 nnoremap <silent> <leader>D :BufOnly<cr>
+
+" vim-edit
+nnoremap Y :CopyText<cr>
+
 
 " " vim-wintabs
 " nnoremap <silent> <c-p> :WintabsPrevious<cr>
