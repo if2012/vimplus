@@ -1,11 +1,18 @@
-"
-"             __                __          
-"     __   __/_/___ ___  ____  / /_  _______
-"     \ \ / / / __ `__ \/ __ \/ / / / / ___/
-"      \ V / / / / / / / /_/ / / /_/ (__  )
-"       \_/_/_/ /_/ /_/ ,___/_/\____/____/
-"                    /_/
-"            
+"   .  . .  .  . .  . S@t.. .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  .  . .  ..
+"    .     ..t%SXSS%:;t.X8S% .   .      .       .       .       .       .       .       .       .       .       .       .
+"      . %St8;8:X;8:8:8%8;%%:@S:    . .    . .    ....    .  .    .  .    .  .    .  .    .  .    .  .    .  .    .  ....
+"  .    8: %.;t;S;%@88:X.8X8%;8S t@@%   .  %@@t  .X88X .      .       .   %@@@@@@@@@X:  .     .       .       .       .
+"    ..X.;X%8t8%8ttX.88;8.8%:;% ;8:SX%.   SX.8S.  St88:  .  .   .  .    ..XS.@%SSS88S@:. X@@%  . . .    .  .    .  ......
+"   . X;:;8SS888;8tt;8:8:8; t:t8S 8:Xt.  :8888: .%888:.  .SSSSSSSSSSS%:  .S888t   @@8X: .%.88  .SSt  .:SS;  .%SSSSSSSS%.
+"    :t8 :;X8S;8.8S;8S.8.t8:%8XS.. S8.8:.S8;8;  :@;@88 . S:88 X.88@88:@t..%S.  .. X;8@: :%:;8. X%:X;. 8;.;  %S8@XXSXSS8..
+"  .t88; X;8S8888;8S8t 8S88SSStt:. @.%8St;@8X  . t .8S   S:88:%888%;8t8:..S.S@%SSS8S88t .% @;  X:.X.  88t :.t@t8@ .......
+"  8; :888XSStS;88;88X%;;tt::;;8@ ..%X88:88Xt    .S@.::. S@8% X8.@;S888X .%;88SSSS.SX.:. 8S88: @;88t. 8.S8  t;@8@88@88S..
+"  S. :tX: ;%8S8 : .::. %8t  %S 8.  @88t8 8t.  . . .@8;  8888 @@%S;t8.8S .:SX8; .:.... . S8; ..8888:..8:8@: ;St@@888.@@..
+"    :8:;888888 .; .     8%8@       .8X.@8X  .    X%8@  .t@8S X88X:%888X .@8@8t  ..  .   SX%X .X;;S@%tS8; ;..SttSXS8888S.
+"    t.8XX;;8X% XX.  .    %8X8;   . :tX8@t     .  t8X8:  %@@S X8@@:t8tXt...:%t..       . X:8X  X8@@88@888t. %88t888 888t.
+"  .    :8;S: . S@.       t8;8:: .   .;:;. . .   .%@%:   t%%; .%%;..: t. .;  :  . . .    %;8.  ;X;X%.:.: t  ;t  ;:: :t;..
+"     :%@t%8   88.  .  .  :: . ..   .   .          .   . ..  .      ..   .    .       . . ... .   . .   .        ..
+"      .. 8888   ..      ...   . .    .   .  . .     .   ..    .  .    .        .   .   . ..    .  .  .   .  . .     ....
 "
 " Author: chxuan <787280310@qq.com>
 " Repository: https://github.com/chxuan/vimplus
@@ -108,11 +115,25 @@ set encoding=utf8
 set fileencodings=utf8,ucs-bom,gbk,cp936,gb2312,gb18030
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gvim/macvim设置
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has("gui_running")
+    set guifont=Droid\ Sans\ Mono\ Nerd\ Font\ Complete:h18 " 设置字体
+    set guioptions-=m           " 隐藏菜单栏
+    set guioptions-=T           " 隐藏工具栏
+    set guioptions-=L           " 隐藏左侧滚动条
+    set guioptions-=r           " 隐藏右侧滚动条
+    set guioptions-=b           " 隐藏底部滚动条
+    set showtabline=0           " 隐藏Tab栏
+    set guicursor=n-v-c:ver5    " 设置光标为竖线
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 插件列表
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " inspired by spf13, 自定义需要的插件集合
 if !exists('g:plug_groups')
-    " let g:plug_groups=['python', 'javascript', 'golang', 'php', 'ruby', 'shell', 
+    " let g:plug_groups=['python', 'javascript', 'golang', 'php', 'ruby', 'shell',
     "             \    'markdown', 'html', 'css', 'less', 'coffeescript', 'tmux', 'json', 'beta']
     let g:plug_groups=['python', 'javascript', 'markdown', 'html', 'css', 'beta']
 endif
@@ -167,12 +188,12 @@ Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'rhysd/github-complete.vim'
-Plug 'yianwillis/vimcdoc'
 Plug 'wsdjeg/FlyGrep.vim'
 Plug 'NLKNguyen/c-syntax.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'vim-scripts/indentpython.vim'
 
 if count(g:plug_groups, 'tmux')
     " tmux
@@ -187,7 +208,7 @@ endif
 
 " }}}
 
-call plug#end()            
+call plug#end()
 
 " load vim default plugin
 runtime macros/matchit.vim
@@ -289,7 +310,7 @@ fun! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfun
-autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl 
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl
             \    autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " }}}
@@ -383,8 +404,8 @@ inoremap <silent> <leader>n <esc> :NERDTreeToggle<cr>
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
-let g:NERDTreeHighlightFolders = 1         
-let g:NERDTreeHighlightFoldersFullName = 1 
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
 let g:NERDTreeDirArrowExpandable='▷'
 let g:NERDTreeDirArrowCollapsible='▼'
 " o.......打开文件目录或书签
@@ -413,24 +434,24 @@ let g:NERDTreeDirArrowCollapsible='▼'
 " ctrl + w + w......光标自动在左右侧窗口切换
 
 " YCM {{{
-let g:ycm_confirm_extra_conf = 0 
+let g:ycm_confirm_extra_conf = 0
 " let g:ycm_error_symbol = '>>'
 " let g:ycm_warning_symbol = '>*'
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '!'
 
 " YCM
-let g:ycm_confirm_extra_conf = 0 
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_error_symbol = '✗'
 let g:ycm_warning_symbol = '✗'
-let g:ycm_seed_identifiers_with_syntax = 1 
-let g:ycm_complete_in_comments = 1 
-let g:ycm_complete_in_strings = 1 
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
 let g:ycm_server_python_interpreter = '/usr/bin/python'
 let g:ycm_python_binary_path = 'python'
 nnoremap <leader>u :YcmCompleter GoToDeclaration<cr>
 " 已经使用cpp-mode插件提供的转到函数实现的功能
-" nnoremap <leader>i :YcmCompleter GoToDefinition<cr> 
+" nnoremap <leader>i :YcmCompleter GoToDefinition<cr>
 nnoremap <leader>o :YcmCompleter GoToInclude<cr>
 nnoremap <leader>ff :YcmCompleter FixIt<cr>
 nmap <F5> :YcmDiags<cr>
@@ -461,16 +482,16 @@ let g:ycm_semantic_triggers =  {
 " 直接触发自动补全 insert模式下
 " let g:ycm_key_invoke_completion = '<C-Space>'
 " Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
-let g:ycm_filetype_whitelist = { 
+let g:ycm_filetype_whitelist = {
 			\ "c":1,
-			\ "cpp":1, 
+			\ "cpp":1,
 			\ "objc":1,
 			\ "objcpp":1,
 			\ "python":1,
 			\ "java":1,
 			\ "javascript":1,
 			\ "coffee":1,
-			\ "vim":1, 
+			\ "vim":1,
 			\ "go":1,
 			\ "cs":1,
 			\ "lua":1,
@@ -552,27 +573,27 @@ let g:tagbar_width = 30
 nnoremap <silent> <leader>t :TagbarToggle<cr>
 inoremap <silent> <leader>t <esc> :TagbarToggle<cr>
 " 关闭排序     [也就是按标签本身在文件中的位置排序]
-let g:tagbar_sort = 0                          
+let g:tagbar_sort = 0
 " 在某些情况下自动打开tagbar
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 " 解决tagbar和airline打开大文件性能冲突
 let g:airline#extensions#tagbar#enabled = 0
 
-""默认打开Taglist 
-"let Tlist_Auto_Open=0 
-""""""""""""""""""""""""""""""" 
-"" Tag list (ctags) 
-""""""""""""""""""""""""""""""""" 
-"let Tlist_Ctags_Cmd = '/usr/local/bin/ctags' 
-"let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
+""默认打开Taglist
+"let Tlist_Auto_Open=0
+"""""""""""""""""""""""""""""""
+"" Tag list (ctags)
+"""""""""""""""""""""""""""""""""
+"let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+"let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的
 "let Tlist_File_Fold_Auto_Close = 1
-"let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
+"let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim
 "let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
 "" minibufexpl插件的一般设置
 "let g:miniBufExplMapWindowNavVim = 1
 "let g:miniBufExplMapWindowNavArrows = 1
 "let g:miniBufExplMapCTabSwitchBufs = 1
-"let g:miniBufExplModSelTarget = 1  
+"let g:miniBufExplModSelTarget = 1
 "nmap tl :Tlist<cr>
 
 " incsearch.vim
